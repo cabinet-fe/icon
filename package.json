@@ -9,7 +9,7 @@
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.json --max-warnings 0",
     "lint:fix": "eslint --fix . --ext .vue,.js,.ts,.jsx,.tsx,.json --max-warnings 0",
     "format": "prettier --write . && pnpm run -C ./packages/svg optimize",
-    "release": "bumpp packages/vue/package.json"
+    "release": "bumpp packages/vue/package.json && cd packages/vue && npm publish --registry https://registry.npmjs.org --access public"
   },
   "devDependencies": {
     "@sxzz/eslint-config": "^2.4.4",
