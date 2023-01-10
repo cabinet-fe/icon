@@ -1,0 +1,24 @@
+{
+  "name": "icon-svg",
+  "version": "2.0.10",
+  "description": "SVG icon for Element Ultra Icons collection.",
+  "keywords": [
+    "icon",
+    "svg"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cabinet-fe/icon-ultra.git",
+    "directory": "packages/svg"
+  },
+  "files": [
+    "*.svg"
+  ],
+  "scripts": {
+    "optimize": "svgo -f . -o ."
+  },
+  "devDependencies": {
+    "svgo": "^2.8.0"
+  }
+}
