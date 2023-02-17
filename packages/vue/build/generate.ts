@@ -18,9 +18,7 @@ const getSvgFiles = async () => {
     // @ts-expect-error
     (await findWorkspaceDir.default(process.cwd()))!
   )
-  const pkg = pkgs.find(
-    (pkg) => pkg.manifest.name === 'icon-svg'
-  )!
+  const pkg = pkgs.find((pkg) => pkg.manifest.name === 'icon-svg')!
   return glob('*.svg', { cwd: pkg.dir, absolute: true })
 }
 
