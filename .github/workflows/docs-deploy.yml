@@ -38,6 +38,9 @@ jobs:
 
       # 运行构建脚本
       - name: 构建
+        run: pnpm build
+
+      - name: 构建文档
         run: pnpm build:doc
 
       # 部署

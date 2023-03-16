@@ -52,11 +52,11 @@ const buildBundle = () => {
         entryNames: `[name]${minify ? '.min' : ''}`,
         minify,
       }),
-      build({
-        ...getBuildOptions('iife'),
-        entryNames: `[name].iife${minify ? '.min' : ''}`,
-        minify,
-      }),
+      // build({
+      //   ...getBuildOptions('iife'),
+      //   entryNames: `[name].iife${minify ? '.min' : ''}`,
+      //   minify,
+      // }),
       build({
         ...getBuildOptions('cjs'),
         entryNames: `[name]${minify ? '.min' : ''}`,

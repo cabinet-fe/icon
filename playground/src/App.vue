@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-import { icons } from 'icon-ultra/vue'
+import { icons } from 'icon-ultra/global'
 </script>
 
 <style>

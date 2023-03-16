@@ -6,7 +6,8 @@ export interface InstallOptions {
   /** @default `ElIcon` */
   prefix?: string
 }
-export default (app: App, { prefix = 'ElIcon' }: InstallOptions = {}) => {
+export default function (app: App, options: InstallOptions) {
+  const {  prefix = 'ElIcon' } = options
   for (const [key, component] of Object.entries(icons)) {
     app.component(prefix + key, component)
   }
