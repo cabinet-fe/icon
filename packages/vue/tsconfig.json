@@ -3,7 +3,7 @@
     "module": "ESNext",
     "declaration": true,
     "baseUrl": ".",
-    "declarationDir": "./dist/types",
+    // "declarationDir": "./dist/types",
     "strict": true,
     "noImplicitAny": true,
     "moduleResolution": "node",
