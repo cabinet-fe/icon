@@ -3,6 +3,7 @@
   "private": true,
   "packageManager": "pnpm@7.13.2",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "dev": "pnpm run -C playground dev",
     "build": "pnpm run -C ./packages/vue build",
