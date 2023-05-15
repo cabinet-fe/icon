@@ -34,7 +34,7 @@ jobs:
           version: latest
 
       - name: 安装依赖
-        run: pnpm install --ignore-errors
+        run: pnpm install --ignore-scripts
 
       # 运行构建脚本
       - name: 构建
