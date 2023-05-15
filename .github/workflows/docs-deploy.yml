@@ -7,7 +7,7 @@ on:
 
 jobs:
   docs:
-    if: "contains(github.event.head_commit.message, '[ci]')"
+    if: contains(github.event.head_commit.message, '[ci]')
     runs-on: ubuntu-latest
     steps:
       - name: 分支拉取
@@ -34,7 +34,7 @@ jobs:
           version: latest
 
       - name: 安装依赖
-        run: pnpm install --ignore-scripts
+        run: pnpm install
 
       # 运行构建脚本
       - name: 构建
