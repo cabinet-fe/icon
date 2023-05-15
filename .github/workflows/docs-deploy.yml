@@ -31,7 +31,7 @@ jobs:
       # 如果缓存没有命中，安装依赖
       - uses: pnpm/action-setup@v2
         with:
-          version: latest
+          version: 8.4.0
 
       - name: 安装依赖
         run: pnpm install
