@@ -35,7 +35,7 @@ jobs:
           run_install: false
 
       - name: 安装依赖
-        run: pnpm install
+        run: pnpm i
 
       # 运行构建脚本
       - name: 构建
