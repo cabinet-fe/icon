@@ -1,21 +1,16 @@
 {
   "compilerOptions": {
     "module": "ESNext",
-    "declaration": true,
     "baseUrl": ".",
-    "declarationDir": "./dist",
     "strict": true,
     "noImplicitAny": true,
     "moduleResolution": "Bundler",
     "esModuleInterop": true,
     "jsx": "preserve",
-    "target": "ES2018",
-    "sourceMap": true,
-    "lib": ["ES2018", "DOM"],
+    "target": "ESNext",
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "types": []
   },
-  "include": ["./src/**/*"],
-  "references": [{ "path": "./tsconfig.build.json" }]
+  "include": ["./src/**/*"]
 }
