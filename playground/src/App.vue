@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div>
-      从icon-ultra中导出对应的图标即可, 导出名就是下方的图标名
-    </div>
+    <div>从icon-ultra中导出对应的图标即可, 导出名就是下方的图标名</div>
     <span v-for="(Icon, key) in icons" :key="key" class="icon-box">
       <component :is="Icon" class="icon" />
       <div>
