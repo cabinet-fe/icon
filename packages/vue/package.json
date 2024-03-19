@@ -43,7 +43,7 @@
     "build:types": "vue-tsc --declaration --emitDeclarationOnly"
   },
   "peerDependencies": {
-    "vue": "^3.3.7"
+    "vue": "^3.4.21"
   },
   "devDependencies": {
     "icon-svg": "workspace:*",
@@ -64,7 +64,7 @@
     "prettier": "^3.0.3",
     "tsx": "^3.14.0",
     "unplugin-vue": "^4.3.5",
-    "vue": "^3.3.7",
-    "vue-tsc": "^1.8.22"
+    "vue": "^3.4.21",
+    "vue-tsc": "^2.0.6"
   }
 }
