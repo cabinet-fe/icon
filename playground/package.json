@@ -12,6 +12,7 @@
     "icon-ultra": "workspace:*",
     "vue": "^3.4.21"
   },
+  "type": "module",
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
     "vite": "^5.1.6"
