@@ -7,4 +7,7 @@ export default defineConfig({
     sourcemap: true,
   },
   base: '/icon-ultra/',
+  server: {
+    host: true,
+  },
 })
