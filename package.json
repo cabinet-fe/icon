@@ -8,7 +8,8 @@
     "build": "pnpm run -C ./packages/vue build",
     "build:doc": "pnpm run -C ./playground build",
     "format": "prettier --write . && pnpm run -C ./packages/svg optimize",
-    "release": "bumpp packages/vue/package.json && cd packages/vue && npm publish --registry https://registry.npmjs.org --access public"
+    "pub": "cd packages/vue && npm publish --registry https://registry.npmjs.org --access public",
+    "release": "bumpp packages/vue/package.json && pnpm pub"
   },
   "devDependencies": {
     "bumpp": "^8.2.1",
