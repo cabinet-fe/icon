@@ -4,13 +4,17 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "pnpm run -C playground dev",
-    "build": "pnpm run -C ./packages/vue build",
+    "dev": "cd ./playground &&  pnpm run dev",
+    "build": "cd ./packages/vue && pnpm run build",
     "build:doc": "pnpm run -C ./playground build",
-    "format": "prettier --write . && pnpm run -C ./packages/svg optimize",
+    "format": "prettier --write . && cd ./packages/svg && pnpm run optimize",
     "pub": "cd packages/vue && npm publish --registry https://registry.npmjs.org --access public",
     "release": "bumpp packages/vue/package.json && pnpm pub"
   },
+  "workspaces": [
+    "packages/*",
+    "playground"
+  ],
   "devDependencies": {
     "bumpp": "^8.2.1",
     "prettier": "^3.0.3",
