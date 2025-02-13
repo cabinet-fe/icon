@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts" setup>
-import { icons } from 'icon-ultra/global'
+import { icons } from 'icon-ultra/src/global.js'
 </script>
 
 <style>
