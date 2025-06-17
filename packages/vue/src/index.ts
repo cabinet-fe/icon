@@ -1,1 +1,2 @@
-export * from './components'
+export * from './colorful'
+export * from './normal'

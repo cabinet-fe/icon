@@ -11,42 +11,40 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 分支拉取
-        uses: actions/checkout@master
+        uses: actions/checkout@v4
 
-      # 使用nodejs 16版本
-      - name: 安装node
-        uses: actions/setup-node@v3
+      # 安装 bun
+      - name: 安装bun
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version: '18'
+          bun-version: latest
 
-      # 缓存 node_modules
-      - name: 缓存node_modules
-        uses: actions/cache@v3
+      # 缓存 bun 依赖
+      - name: 缓存依赖
+        uses: actions/cache@v4
         with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: |
+            ~/.bun/install/cache
+            node_modules
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}
           restore-keys: |
-            ${{ runner.os }}-
+            ${{ runner.os }}-bun-
 
-      # 如果缓存没有命中，安装依赖
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8.4.0
-          run_install: false
-
+      # 安装依赖
       - name: 安装依赖
-        run: pnpm i
+        run: bun install
 
-      # 运行构建脚本
-      - name: 构建
-        run: pnpm build
+      # 构建Vue组件包
+      - name: 构建Vue组件
+        run: bun run --cwd packages/vue build
 
+      # 构建文档
       - name: 构建文档
-        run: pnpm build:doc
+        run: bun run --cwd playground build:doc
 
       # 部署
       - name: 部署到github page中
-        uses: crazy-max/ghaction-github-pages@v3
+        uses: crazy-max/ghaction-github-pages@v4
         with:
           # 部署到 gh-pages 分支
           target_branch: gh-pages

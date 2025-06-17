@@ -1,0 +1,14 @@
+<template>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+    <path
+      fill="currentColor"
+      d="M10.5 5.946v4.108c0 .4-.435.656-.767.434L6.617 8.411a.49.49 0 0 1 0-.822l3.116-2.077c.332-.222.767.035.767.434"
+    />
+  </svg>
+</template>
+<script lang="ts">
+import type { DefineComponent } from 'vue'
+export default {
+  name: 'CaretLeft',
+} as DefineComponent
+</script>

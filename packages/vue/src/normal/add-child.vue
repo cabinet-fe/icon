@@ -1,0 +1,14 @@
+<template>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+    <path
+      fill="currentColor"
+      d="M6.032 9.478h8.77a.7.7 0 0 1 .698.698v.63a.496.496 0 1 1-.992 0v-.336H6.325v2.6h4.868a.496.496 0 1 1 0 .99H6.03a.7.7 0 0 1-.699-.698v-1.125h-2.33a1 1 0 0 1-1-1v-4.93h-.803a.7.7 0 0 1-.698-.7V2.424a.7.7 0 0 1 .698-.698h8.77a.7.7 0 0 1 .699.698V5.61a.7.7 0 0 1-.699.698H2.94V10.3a1 1 0 0 0 1 1h1.394v-1.125a.7.7 0 0 1 .699-.698m-4.54-6.761v2.6h8.183v-2.6zm12.172 9.387a.302.302 0 0 1 .605 0v.632h.631a.302.302 0 0 1 0 .605h-.631v.632a.302.302 0 0 1-.605 0v-.632h-.632a.302.302 0 0 1 0-.605h.632z"
+    />
+  </svg>
+</template>
+<script lang="ts">
+import type { DefineComponent } from 'vue'
+export default {
+  name: 'AddChild',
+} as DefineComponent
+</script>

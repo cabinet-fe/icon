@@ -1,0 +1,14 @@
+<template>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+    <path
+      fill="currentColor"
+      d="M9.51 10.219a4.764 4.764 0 1 1 .708-.708l3.182 3.18a.5.5 0 0 1-.007.707l-.008.008a.484.484 0 0 1-.694-.007zm.767-3.705a3.763 3.763 0 1 0-7.525 0 3.763 3.763 0 0 0 7.525 0"
+    />
+  </svg>
+</template>
+<script lang="ts">
+import type { DefineComponent } from 'vue'
+export default {
+  name: 'Search',
+} as DefineComponent
+</script>

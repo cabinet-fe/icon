@@ -1,0 +1,15 @@
+<template>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+    <path
+      fill="currentColor"
+      fill-rule="evenodd"
+      d="M6.514 11.278a4.74 4.74 0 0 0 2.997-1.06l3.18 3.18a.484.484 0 0 0 .694.008l.008-.008a.5.5 0 0 0 .006-.706l-3.18-3.181a4.764 4.764 0 1 0-3.704 1.767m0-8.528a3.764 3.764 0 1 1 0 7.528 3.764 3.764 0 0 1 0-7.528M4.496 7h4.008a.5.5 0 0 0 0-1H4.496a.5.5 0 0 0 0 1"
+    />
+  </svg>
+</template>
+<script lang="ts">
+import type { DefineComponent } from 'vue'
+export default {
+  name: 'ZoomOut',
+} as DefineComponent
+</script>

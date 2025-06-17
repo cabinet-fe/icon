@@ -1,0 +1,15 @@
+<template>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+    <path
+      fill="currentColor"
+      fill-rule="evenodd"
+      d="M4.5 1.5a1 1 0 0 0-1 1V14a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2.5a1 1 0 0 0-1-1zm0 12.5V2.5h7V14zm4.488-1H7.012a.51.51 0 0 1-.512-.496c0-.276.235-.504.512-.504h1.976c.277 0 .512.228.512.496a.513.513 0 0 1-.512.504"
+    />
+  </svg>
+</template>
+<script lang="ts">
+import type { DefineComponent } from 'vue'
+export default {
+  name: 'Mobile',
+} as DefineComponent
+</script>
