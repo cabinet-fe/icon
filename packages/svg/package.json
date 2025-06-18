@@ -1,6 +1,7 @@
 {
   "name": "icon-svg",
   "version": "2.0.10",
+  "type": "module",
   "description": "SVG icon for Element Ultra Icons collection.",
   "keywords": [
     "icon",
@@ -16,7 +17,7 @@
     "*.svg"
   ],
   "scripts": {
-    "format": "svgo -rf . -o ."
+    "format": "svgo --config=svgo.config.js -rf . -o ."
   },
   "devDependencies": {
     "svgo": "^3.3.2"
