@@ -4,8 +4,132 @@
     <header class="header">
       <div class="header-content">
         <div class="logo">
-          <h1>Icon Ultra</h1>
-          <span class="subtitle">Beautiful icon library</span>
+          <div class="logo-icon">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 48 48"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="24"
+                cy="24"
+                r="20"
+                stroke="url(#gradient1)"
+                stroke-width="3"
+                fill="none"
+              />
+              <rect
+                x="14"
+                y="14"
+                width="6"
+                height="6"
+                rx="1"
+                fill="url(#gradient2)"
+              />
+              <rect
+                x="22"
+                y="14"
+                width="6"
+                height="6"
+                rx="1"
+                fill="url(#gradient2)"
+              />
+              <rect
+                x="30"
+                y="14"
+                width="6"
+                height="6"
+                rx="1"
+                fill="url(#gradient2)"
+              />
+              <rect
+                x="14"
+                y="22"
+                width="6"
+                height="6"
+                rx="1"
+                fill="url(#gradient3)"
+              />
+              <rect
+                x="22"
+                y="22"
+                width="6"
+                height="6"
+                rx="1"
+                fill="url(#gradient1)"
+              />
+              <rect
+                x="30"
+                y="22"
+                width="6"
+                height="6"
+                rx="1"
+                fill="url(#gradient3)"
+              />
+              <rect
+                x="14"
+                y="30"
+                width="6"
+                height="6"
+                rx="1"
+                fill="url(#gradient2)"
+              />
+              <rect
+                x="22"
+                y="30"
+                width="6"
+                height="6"
+                rx="1"
+                fill="url(#gradient2)"
+              />
+              <rect
+                x="30"
+                y="30"
+                width="6"
+                height="6"
+                rx="1"
+                fill="url(#gradient2)"
+              />
+              <defs>
+                <linearGradient
+                  id="gradient1"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop offset="0%" style="stop-color: #3b82f6" />
+                  <stop offset="100%" style="stop-color: #1d4ed8" />
+                </linearGradient>
+                <linearGradient
+                  id="gradient2"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop offset="0%" style="stop-color: #8b5cf6" />
+                  <stop offset="100%" style="stop-color: #7c3aed" />
+                </linearGradient>
+                <linearGradient
+                  id="gradient3"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop offset="0%" style="stop-color: #06b6d4" />
+                  <stop offset="100%" style="stop-color: #0891b2" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="logo-text">
+            <h1>Icon Ultra</h1>
+            <span class="subtitle">Beautiful icon library</span>
+          </div>
         </div>
         <div class="search-container">
           <div class="search-box">
@@ -397,14 +521,24 @@ const copyIconName = async (iconName: string) => {
   justify-content: space-between;
 }
 
-.logo h1 {
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-icon {
+  flex-shrink: 0;
+}
+
+.logo-text h1 {
   margin: 0;
   font-size: 1.5rem;
   font-weight: 600;
   color: #111827;
 }
 
-.subtitle {
+.logo-text .subtitle {
   font-size: 0.875rem;
   color: #6b7280;
   display: block;
