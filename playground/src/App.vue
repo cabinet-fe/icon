@@ -306,9 +306,9 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, reactive } from 'vue'
-import * as normalIcons from '../../packages/vue/src/normal/index.js'
-import * as colorfulIcons from '../../packages/vue/src/colorful/index.js'
+import { ref, computed } from 'vue'
+import * as normalIcons from 'icon-ultra/normal'
+import * as colorfulIcons from 'icon-ultra/colorful'
 
 // 响应式状态
 const searchQuery = ref('')
