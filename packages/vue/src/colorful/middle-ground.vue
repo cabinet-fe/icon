@@ -21,6 +21,6 @@
 <script lang="ts">
 import type { DefineComponent } from 'vue'
 export default {
-  name: 'Middleground',
+  name: 'MiddleGround',
 } as DefineComponent
 </script>

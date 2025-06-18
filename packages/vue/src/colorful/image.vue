@@ -22,6 +22,6 @@
 <script lang="ts">
 import type { DefineComponent } from 'vue'
 export default {
-  name: 'PictureFilled',
+  name: 'Image',
 } as DefineComponent
 </script>

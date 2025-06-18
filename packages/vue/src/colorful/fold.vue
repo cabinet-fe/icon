@@ -18,6 +18,6 @@
 <script lang="ts">
 import type { DefineComponent } from 'vue'
 export default {
-  name: 'File',
+  name: 'Fold',
 } as DefineComponent
 </script>

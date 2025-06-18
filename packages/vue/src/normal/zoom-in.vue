@@ -1,10 +1,15 @@
 <template>
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-    <path
-      fill="currentColor"
-      fill-rule="evenodd"
-      d="M6.514 11.278a4.74 4.74 0 0 0 2.997-1.06l3.18 3.18a.484.484 0 0 0 .694.008l.008-.008a.5.5 0 0 0 .006-.706l-3.18-3.181a4.764 4.764 0 1 0-3.704 1.767m0-8.528a3.764 3.764 0 1 1 0 7.528 3.764 3.764 0 0 1 0-7.528M6 9V7H4V6h2V4h1v2h2v1H7v2z"
-    />
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+  >
+    <circle cx="11" cy="11" r="8" />
+    <path d="m21 21-4.35-4.35M11 8v6m-3-3h6" />
   </svg>
 </template>
 <script lang="ts">

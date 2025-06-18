@@ -8,12 +8,17 @@
     stroke-width="2"
     viewBox="0 0 24 24"
   >
-    <path d="M5 12h14m-7-7v14" />
+    <circle cx="12" cy="9" r="1" />
+    <circle cx="19" cy="9" r="1" />
+    <circle cx="5" cy="9" r="1" />
+    <circle cx="12" cy="15" r="1" />
+    <circle cx="19" cy="15" r="1" />
+    <circle cx="5" cy="15" r="1" />
   </svg>
 </template>
 <script lang="ts">
 import type { DefineComponent } from 'vue'
 export default {
-  name: 'Plus',
+  name: 'MoveHorizontal',
 } as DefineComponent
 </script>
