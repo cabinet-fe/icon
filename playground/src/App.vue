@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="app" :style="{ '--stroke-width': strokeWidth }">
     <!-- 头部 -->
     <header class="header">
       <div class="header-content">
@@ -61,7 +61,7 @@
                   v-model="iconSize"
                   type="range"
                   min="16"
-                  max="48"
+                  max="40"
                   class="range-slider"
                 />
                 <span class="value">{{ iconSize }}px</span>
@@ -91,20 +91,51 @@
       <main class="content">
         <div class="content-header">
           <div class="results-info">
-            <span class="results-count"
-              >{{ Object.keys(filteredIcons).length }} 个图标</span
-            >
+            <span class="results-count">{{ getTotalIconCount() }} 个图标</span>
             <span v-if="searchQuery" class="search-query"
               >搜索 "{{ searchQuery }}"</span
             >
           </div>
         </div>
 
-        <div class="icons-grid">
+        <!-- 分组显示 -->
+        <div v-if="filteredIcons.grouped" class="grouped-icons">
           <div
-            v-for="(icon, key) in filteredIcons"
+            v-for="group in filteredIcons.groups"
+            :key="group.title"
+            class="icon-group"
+          >
+            <h3 class="group-title">{{ group.title }}</h3>
+            <div class="icons-grid">
+              <div
+                v-for="(icon, key) in group.icons"
+                :key="String(key)"
+                :data-tooltip="String(key)"
+                @click="copyIconName(String(key))"
+                class="icon-item"
+              >
+                <div class="icon-wrapper">
+                  <component
+                    :is="icon"
+                    class="icon"
+                    :style="{
+                      width: `${iconSize}px`,
+                      height: `${iconSize}px`,
+                      color: iconColor
+                    }"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 常规显示 -->
+        <div v-else class="icons-grid">
+          <div
+            v-for="(icon, key) in filteredIcons.icons"
             :key="String(key)"
-            :title="String(key)"
+            :data-tooltip="String(key)"
             @click="copyIconName(String(key))"
             class="icon-item"
           >
@@ -115,17 +146,15 @@
                 :style="{
                   width: `${iconSize}px`,
                   height: `${iconSize}px`,
-                  color: iconColor,
-                  'stroke-width': strokeWidth
+                  color: iconColor
                 }"
               />
             </div>
-            <span class="icon-name">{{ String(key) }}</span>
           </div>
         </div>
 
         <!-- 空状态 -->
-        <div v-if="Object.keys(filteredIcons).length === 0" class="empty-state">
+        <div v-if="isEmpty()" class="empty-state">
           <div class="empty-icon">
             <svg
               width="48"
@@ -160,7 +189,7 @@ import * as colorfulIcons from '../../packages/vue/src/colorful/index.js'
 // 响应式状态
 const searchQuery = ref('')
 const activeCategory = ref('all')
-const iconSize = ref(36)
+const iconSize = ref(32)
 const strokeWidth = ref(2)
 const iconColor = ref('#000000')
 const showCopyToast = ref(false)
@@ -181,7 +210,7 @@ const getOriginalIconName = (name: string) => {
 }
 
 // 合并所有图标并处理名称
-const allIcons = reactive(() => {
+const allIcons = computed(() => {
   const processed: any = {}
 
   Object.entries(normalIcons).forEach(([key, value]) => {
@@ -195,30 +224,30 @@ const allIcons = reactive(() => {
   })
 
   return processed
-})()
+})
 
 // 处理普通图标
-const processedNormalIcons = reactive(() => {
+const processedNormalIcons = computed(() => {
   const processed: any = {}
   Object.entries(normalIcons).forEach(([key, value]) => {
     const cleanName = processIconName(key)
     processed[cleanName] = value
   })
   return processed
-})()
+})
 
 // 处理彩色图标
-const processedColorfulIcons = reactive(() => {
+const processedColorfulIcons = computed(() => {
   const processed: any = {}
   Object.entries(colorfulIcons).forEach(([key, value]) => {
     const cleanName = processIconName(key)
     processed[cleanName] = value
   })
   return processed
-})()
+})
 
 // 创建显示名称到原始名称的映射
-const iconNameMapping = reactive(() => {
+const iconNameMapping = computed(() => {
   const mapping: Record<string, string> = {}
 
   Object.keys(normalIcons).forEach(key => {
@@ -234,36 +263,53 @@ const iconNameMapping = reactive(() => {
   })
 
   return mapping
-})()
+})
 
 // 分类配置
 const categories = computed(() => [
   {
     key: 'all',
     name: '全部',
-    count: Object.keys(allIcons).length
+    count: Object.keys(allIcons.value).length
   },
   {
     key: 'normal',
     name: '常规图标',
-    count: Object.keys(processedNormalIcons).length
+    count: Object.keys(processedNormalIcons.value).length
   },
   {
     key: 'colorful',
     name: '彩色图标',
-    count: Object.keys(processedColorfulIcons).length
+    count: Object.keys(processedColorfulIcons.value).length
   }
 ])
 
 // 过滤图标
 const filteredIcons = computed(() => {
-  let icons = allIcons
+  // 如果是全部分类且没有搜索，返回分组数据
+  if (activeCategory.value === 'all' && !searchQuery.value) {
+    return {
+      grouped: true,
+      groups: [
+        {
+          title: '常规图标',
+          icons: processedNormalIcons.value
+        },
+        {
+          title: '彩色图标',
+          icons: processedColorfulIcons.value
+        }
+      ]
+    }
+  }
+
+  let icons = allIcons.value
 
   // 按分类过滤
   if (activeCategory.value === 'normal') {
-    icons = processedNormalIcons
+    icons = processedNormalIcons.value
   } else if (activeCategory.value === 'colorful') {
-    icons = processedColorfulIcons
+    icons = processedColorfulIcons.value
   }
 
   // 按搜索词过滤
@@ -275,10 +321,10 @@ const filteredIcons = computed(() => {
         filtered[key] = icons[key]
       }
     })
-    return filtered
+    return { grouped: false, icons: filtered }
   }
 
-  return icons
+  return { grouped: false, icons }
 })
 
 // 设置活跃分类
@@ -286,10 +332,27 @@ const setActiveCategory = (category: string) => {
   activeCategory.value = category
 }
 
+// 获取图标总数
+const getTotalIconCount = () => {
+  const result = filteredIcons.value
+  if (result.grouped && result.groups) {
+    return result.groups.reduce(
+      (total, group) => total + Object.keys(group.icons).length,
+      0
+    )
+  }
+  return Object.keys(result.icons || {}).length
+}
+
+// 判断是否为空状态
+const isEmpty = () => {
+  return getTotalIconCount() === 0
+}
+
 // 复制图标名称（大驼峰格式）
 const copyIconName = async (iconName: string) => {
   try {
-    const originalName = iconNameMapping[iconName] || iconName
+    const originalName = iconNameMapping.value[iconName] || iconName
     await navigator.clipboard.writeText(originalName)
     copiedIconName.value = originalName
     showCopyToast.value = true
@@ -312,6 +375,7 @@ const copyIconName = async (iconName: string) => {
   background-color: #fafafa;
   font-family:
     -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow: visible;
 }
 
 /* 头部样式 */
@@ -541,6 +605,7 @@ const copyIconName = async (iconName: string) => {
 .content {
   flex: 1;
   min-width: 0;
+  overflow: visible;
 }
 
 .content-header {
@@ -564,25 +629,48 @@ const copyIconName = async (iconName: string) => {
   color: #3b82f6;
 }
 
+/* 分组样式 */
+.grouped-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.icon-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.group-title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111827;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
 /* 图标网格 */
 .icons-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  gap: 0.75rem;
+  overflow: visible;
 }
 
 .icon-item {
   background: white;
   border: 1px solid #e5e7eb;
-  border-radius: 0.75rem;
-  padding: 1rem;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
   text-align: center;
   cursor: pointer;
   transition: all 0.2s;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
+  justify-content: center;
+  position: relative;
 }
 
 .icon-item:hover {
@@ -591,26 +679,70 @@ const copyIconName = async (iconName: string) => {
   transform: translateY(-2px);
 }
 
+/* Tooltip 样式 */
+.icon-item {
+  overflow: visible;
+}
+
+.icon-item::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111827;
+  color: white;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s;
+  z-index: 9999;
+  pointer-events: none;
+  margin-bottom: 8px;
+}
+
+.icon-item::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #111827;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s;
+  z-index: 9999;
+  pointer-events: none;
+  margin-bottom: 2px;
+}
+
+.icon-item:hover::after,
+.icon-item:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
 .icon-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
+  width: 56px;
+  height: 56px;
   background: #f9fafb;
-  border-radius: 0.5rem;
+  border-radius: 0.375rem;
 }
 
 .icon {
   transition: all 0.2s;
-}
-
-.icon-name {
-  font-size: 0.75rem;
-  color: #6b7280;
-  font-weight: 500;
-  word-break: break-all;
-  line-height: 1.2;
+  stroke-width: var(--stroke-width, 2);
 }
 
 /* 空状态 */
@@ -695,17 +827,24 @@ const copyIconName = async (iconName: string) => {
   }
 
   .icons-grid {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 0.75rem;
+    grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+    gap: 0.5rem;
   }
 
   .icon-item {
-    padding: 0.75rem;
+    padding: 0.5rem;
   }
 
   .icon-wrapper {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
+  }
+
+  /* 移动端 tooltip 调整 */
+  .icon-item::after {
+    font-size: 0.6875rem;
+    padding: 0.25rem 0.5rem;
+    margin-bottom: 6px;
   }
 }
 </style>
