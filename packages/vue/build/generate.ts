@@ -8,8 +8,9 @@ import { pathSrc, pathSvg } from './paths'
 import type { BuiltInParserName } from 'prettier'
 
 const getName = (file: string) => {
-  const filename = path.basename(file).replace('.svg', '')
+  const filename = path.basename(file).replace(/\.[a-z]+$/, '')
   const componentName = camelcase(filename, { pascalCase: true })
+
   return {
     filename,
     componentName
@@ -59,7 +60,8 @@ const generateEntry = async (dirs: string[]) => {
         files
           .map(file => {
             const { filename, componentName } = getName(file)
-            return `export { default as ${componentName} } from './${filename}'`
+
+            return `export { default as ${componentName} } from './${filename}.vue'`
           })
           .join('\n')
       )
