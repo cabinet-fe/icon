@@ -1,20 +1,20 @@
 {
-  "name": "icon-ultra-repo",
+  "name": "icon",
   "private": true,
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "pub": "cd packages/vue && npm publish --registry https://registry.npmjs.org --access public",
-    "release": "bumpp packages/vue/package.json && pnpm pub"
+    "pub": "cd packages/vue && npm publish --registry=http://192.168.31.250:6005",
+    "release": "bumpp packages/vue/package.json && npm pub"
   },
   "workspaces": [
     "packages/*",
     "playground"
   ],
   "devDependencies": {
-    "vue": "^3.5.16",
+    "vue": "^3.5.17",
     "bumpp": "^8.2.1",
-    "prettier": "^3.0.3",
-    "typescript": "^5.2.2"
+    "prettier": "^3.6.2",
+    "typescript": "^5.8.3"
   }
 }

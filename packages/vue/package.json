@@ -1,6 +1,6 @@
 {
-  "name": "icon-ultra",
-  "version": "4.1.2",
+  "name": "@ultra/icon",
+  "version": "1.0.0",
   "description": "Vue components of Icons collection.",
   "type": "module",
   "keywords": [
@@ -10,11 +10,11 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cabinet-fe/icon-ultra/issues"
+    "url": "https://github.com/cabinet-fe/icon/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cabinet-fe/icon-ultra.git",
+    "url": "git+https://github.com/cabinet-fe/icon.git",
     "directory": "packages/vue"
   },
   "files": [
