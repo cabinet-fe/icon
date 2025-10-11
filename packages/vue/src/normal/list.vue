@@ -9,6 +9,6 @@
 <script lang="ts">
 import type { DefineComponent } from 'vue'
 export default {
-  name: 'Bulletpoint',
+  name: 'List',
 } as DefineComponent
 </script>

@@ -1,2 +1,2 @@
-export * from './normal'
 export * from './colorful'
+export * from './normal'
