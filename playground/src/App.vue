@@ -1,5 +1,5 @@
 <template>
-  <div class="app" :style="{ '--stroke-width': strokeWidth }">
+  <div class="app">
     <!-- 头部 -->
     <header class="header">
       <div class="header-content">
@@ -211,18 +211,7 @@
                 />
                 <span class="value">{{ iconSize }}px</span>
               </div>
-              <div class="control-group">
-                <label>线条粗细</label>
-                <input
-                  v-model="strokeWidth"
-                  type="range"
-                  min="1"
-                  max="3"
-                  step="0.5"
-                  class="range-slider"
-                />
-                <span class="value">{{ strokeWidth }}px</span>
-              </div>
+
               <div class="control-group">
                 <label>颜色</label>
                 <input v-model="iconColor" type="color" class="color-picker" />
@@ -335,7 +324,6 @@ import * as colorfulIcons from '@ultra/icon/colorful'
 const searchQuery = ref('')
 const activeCategory = ref('all')
 const iconSize = ref(32)
-const strokeWidth = ref(2)
 const iconColor = ref('#000000')
 const showCopyToast = ref(false)
 const copiedIconName = ref('')
@@ -897,7 +885,6 @@ const copyIconName = async (iconName: string) => {
 
 .icon {
   transition: all 0.2s;
-  stroke-width: var(--stroke-width, 2);
 }
 
 /* 空状态 */
