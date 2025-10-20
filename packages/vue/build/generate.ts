@@ -33,11 +33,10 @@ const transformToVueComponent = async (file: string) => {
 <template>
 ${content}
 </template>
-<script lang="ts">
-import type { DefineComponent } from 'vue'
-export default ({
-  name: "${componentName}",
-}) as DefineComponent
+<script setup lang="ts">
+defineOptions({
+  name: "${componentName}"
+})
 </script>`,
     'vue'
   )

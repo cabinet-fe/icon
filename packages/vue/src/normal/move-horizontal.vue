@@ -16,9 +16,8 @@
     <circle cx="5" cy="15" r="1" />
   </svg>
 </template>
-<script lang="ts">
-import type { DefineComponent } from 'vue'
-export default {
+<script setup lang="ts">
+defineOptions({
   name: 'MoveHorizontal',
-} as DefineComponent
+})
 </script>

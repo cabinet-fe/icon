@@ -11,9 +11,8 @@
     <path d="M5 12h14" />
   </svg>
 </template>
-<script lang="ts">
-import type { DefineComponent } from 'vue'
-export default {
+<script setup lang="ts">
+defineOptions({
   name: 'Minus',
-} as DefineComponent
+})
 </script>

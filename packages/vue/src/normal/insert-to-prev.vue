@@ -12,9 +12,8 @@
     <path d="m16 8-2-2 2-2" />
   </svg>
 </template>
-<script lang="ts">
-import type { DefineComponent } from 'vue'
-export default {
+<script setup lang="ts">
+defineOptions({
   name: 'InsertToPrev',
-} as DefineComponent
+})
 </script>

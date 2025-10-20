@@ -15,9 +15,8 @@
     </g>
   </svg>
 </template>
-<script lang="ts">
-import type { DefineComponent } from 'vue'
-export default {
+<script setup lang="ts">
+defineOptions({
   name: 'Fold',
-} as DefineComponent
+})
 </script>

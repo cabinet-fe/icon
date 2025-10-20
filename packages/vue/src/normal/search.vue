@@ -12,9 +12,8 @@
     <circle cx="11" cy="11" r="8" />
   </svg>
 </template>
-<script lang="ts">
-import type { DefineComponent } from 'vue'
-export default {
+<script setup lang="ts">
+defineOptions({
   name: 'Search',
-} as DefineComponent
+})
 </script>

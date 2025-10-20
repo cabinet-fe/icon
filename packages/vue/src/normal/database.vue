@@ -13,9 +13,8 @@
     <path d="M3 12a9 3 0 0 0 18 0" />
   </svg>
 </template>
-<script lang="ts">
-import type { DefineComponent } from 'vue'
-export default {
+<script setup lang="ts">
+defineOptions({
   name: 'Database',
-} as DefineComponent
+})
 </script>

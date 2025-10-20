@@ -12,9 +12,8 @@
     <path d="m21 21-4.35-4.35M8 11h6" />
   </svg>
 </template>
-<script lang="ts">
-import type { DefineComponent } from 'vue'
-export default {
+<script setup lang="ts">
+defineOptions({
   name: 'ZoomOut',
-} as DefineComponent
+})
 </script>

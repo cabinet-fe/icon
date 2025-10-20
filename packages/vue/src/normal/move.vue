@@ -16,9 +16,8 @@
     <circle cx="15" cy="19" r="1" />
   </svg>
 </template>
-<script lang="ts">
-import type { DefineComponent } from 'vue'
-export default {
+<script setup lang="ts">
+defineOptions({
   name: 'Move',
-} as DefineComponent
+})
 </script>

@@ -12,6 +12,7 @@ export async function bundle() {
     entry: {
       colorful: path.resolve(pathSrc, 'colorful', 'index.ts'),
       normal: path.resolve(pathSrc, 'normal', 'index.ts'),
+
       index: entry
     },
 
@@ -26,6 +27,10 @@ export async function bundle() {
     external: ['vue'],
     dts: { vue: true },
     minify: true,
-    outDir: pathOutput
+    outDir: pathOutput,
+
+    outputOptions: {
+      chunkFileNames: '[name].js'
+    }
   })
 }

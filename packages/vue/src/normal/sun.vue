@@ -14,9 +14,8 @@
     />
   </svg>
 </template>
-<script lang="ts">
-import type { DefineComponent } from 'vue'
-export default {
+<script setup lang="ts">
+defineOptions({
   name: 'Sun',
-} as DefineComponent
+})
 </script>

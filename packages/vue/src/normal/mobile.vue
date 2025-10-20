@@ -12,9 +12,8 @@
     <path d="M12 18h.01" />
   </svg>
 </template>
-<script lang="ts">
-import type { DefineComponent } from 'vue'
-export default {
+<script setup lang="ts">
+defineOptions({
   name: 'Mobile',
-} as DefineComponent
+})
 </script>
