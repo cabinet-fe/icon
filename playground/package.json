@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "icon-svg": "workspace:*",
-    "@ultra/icon": "workspace:*"
+    "@meta-wisdom/icon": "workspace:*"
   },
   "type": "module",
   "devDependencies": {
