@@ -4,7 +4,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "pub": "cd packages/vue && npm publish",
+    "pub": "cd packages/vue && npm publish --access=public",
     "release": "bumpp packages/vue/package.json && npm pub"
   },
   "workspaces": [

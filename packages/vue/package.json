@@ -1,6 +1,6 @@
 {
-  "name": "@ultra/icon",
-  "version": "1.0.4",
+  "name": "@meta-wisdom/icon",
+  "version": "1.0.0",
   "description": "Vue components of Icons collection.",
   "type": "module",
   "keywords": [
@@ -60,5 +60,8 @@
     "unplugin-vue": "^7.0.2",
     "vue": "^3.5.22",
     "vue-tsc": "^3.1.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
