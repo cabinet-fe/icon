@@ -1,6 +1,6 @@
 {
   "name": "@ultra/icon",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Vue components of Icons collection.",
   "type": "module",
   "keywords": [
@@ -31,6 +31,11 @@
       "import": "./dist/normal.js",
       "require": "./dist/normal.js",
       "types": "./dist/normal.d.ts"
+    },
+    "./names": {
+      "import": "./dist/names.js",
+      "require": "./dist/names.js",
+      "types": "./dist/names.d.ts"
     },
     "./source": "./src/index.ts",
     "./*": "./*"
