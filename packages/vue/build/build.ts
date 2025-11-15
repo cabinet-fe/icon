@@ -12,6 +12,7 @@ export async function bundle() {
     entry: {
       colorful: path.resolve(pathSrc, 'colorful', 'index.ts'),
       normal: path.resolve(pathSrc, 'normal', 'index.ts'),
+      names: path.resolve(pathSrc, 'names.ts'),
 
       index: entry
     },

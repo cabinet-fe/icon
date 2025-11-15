@@ -51,20 +51,26 @@ defineOptions({
 }
 
 const generateEntry = async (dirs: string[]) => {
+  const iconNamesMap: Record<string, string[]> = {}
+
   await Promise.all(
     dirs.map(async dir => {
       const files = await glob('*.vue', { cwd: dir, absolute: true })
+      const typeName = path.basename(dir)
+      const componentNames: string[] = []
 
       const code = await formatCode(
         files
           .map(file => {
             const { filename, componentName } = getName(file)
-
+            componentNames.push(componentName)
             return `export { default as ${componentName} } from './${filename}.vue'`
           })
           .join('\n')
       )
       await writeFile(path.resolve(dir, 'index.ts'), code, 'utf-8')
+
+      iconNamesMap[typeName] = componentNames
     })
   )
 
@@ -77,12 +83,29 @@ const generateEntry = async (dirs: string[]) => {
     entries.join('\n'),
     'utf-8'
   )
+
+  return iconNamesMap
 }
 
 async function genComponents(dir: string) {
   const files = await glob('*.svg', { cwd: dir, absolute: true })
 
   await Promise.all(files.map(file => transformToVueComponent(file)))
+}
+
+const generateNamesFile = async (iconNamesMap: Record<string, string[]>) => {
+  const code = await formatCode(
+    `
+export type IconType = ${Object.keys(iconNamesMap)
+      .map(key => `'${key}'`)
+      .join(' | ')}
+
+export const iconNames: Record<string, string[]> = ${JSON.stringify(iconNamesMap, null, 2)}
+`,
+    'typescript'
+  )
+
+  await writeFile(path.resolve(pathSrc, 'names.ts'), code, 'utf-8')
 }
 
 export async function generate() {
@@ -98,5 +121,9 @@ export async function generate() {
     dirs.map(dir => path.resolve(pathSvg, dir)).map(dir => genComponents(dir))
   )
 
-  await generateEntry(dirs.map(dir => path.resolve(pathSrc, dir)))
+  const iconNamesMap = await generateEntry(
+    dirs.map(dir => path.resolve(pathSrc, dir))
+  )
+
+  await generateNamesFile(iconNamesMap)
 }

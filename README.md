@@ -80,6 +80,22 @@ import { Search, User, Setting, Word, Excel, Pdf } from '@ultra/icon'
 </script>
 ```
 
+### 获取图标名称列表
+
+如果需要获取所有可用图标的名称列表，可以从 `@ultra/icon/names` 导入：
+
+```typescript
+import { iconNames, normalIconNames, colorfulIconNames } from '@ultra/icon/names'
+
+// 获取所有图标名称
+console.log(iconNames.normal)    // 常规图标名称数组
+console.log(iconNames.colorful)  // 彩色图标名称数组
+
+// 或分别导入
+console.log(normalIconNames)     // 常规图标名称数组
+console.log(colorfulIconNames)   // 彩色图标名称数组
+```
+
 ## 📚 图标分类
 
 ### 常规图标 (Normal Icons)
